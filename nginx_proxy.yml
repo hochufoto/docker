@@ -1,0 +1,51 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    container_name: db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "EoAYGMFKmVU78HzQ83Xd"
+      MYSQL_DATABASE: "npm"
+      MYSQL_USER: "npm"
+      MYSQL_PASSWORD: "gq6Nr66WXhJEMbdpvbmK"
+    volumes:
+      - ./dbdata:/var/lib/mysql
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: npm-app
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '18081:81'
+      - '443:443'
+    environment:
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_NAME: "npm"
+      DB_MYSQL_PASSWORD: "gq6Nr66WXhJEMbdpvbmK"
+      # Uncomment this if IPv6 is not enabled on your host
+      #DISABLE_IPV6: 'true'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: unless-stopped
+    ports:
+      - '18080:80'
+volumes:
+  dbdata:
+
+
+
+#mn2EJsedpPkqQtLTwct8
