@@ -6,6 +6,7 @@ Uninstall old versions
     sudo apt-get remove docker docker-engine docker.io containerd runc
 
 Add docker repository
+
     sudo apt-get update
     sudo apt-get install -y ca-certificates curl gnupg
 
