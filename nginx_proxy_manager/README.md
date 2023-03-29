@@ -1,4 +1,9 @@
 Default Administrator User
 
-Email:    admin@example.com
-Password: changeme
+Email:
+    
+    admin@example.com
+
+Password:
+    
+    changeme
