@@ -2,10 +2,11 @@ My docker compose template
 
 Install Docker
 
-Uninstall old versions
+Uninstall old versions:
+
     sudo apt-get remove docker docker-engine docker.io containerd runc
 
-Add docker repository
+Add docker repository:
 
     sudo apt-get update
     sudo apt-get install -y ca-certificates curl gnupg
@@ -18,5 +19,6 @@ Add docker repository
       "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-Install Docker and Docker compose
+Install Docker and Docker compose:
+
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
