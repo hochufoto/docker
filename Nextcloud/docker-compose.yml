@@ -1,5 +1,27 @@
 version: "3.8"
 
+networks:
+  frontend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: fr-znotes
+    name: fr-znotes
+    external: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.1.0/24
+  backend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: bk-znotes
+    name: bk-znotes
+    external: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.23.1.0/24
+
 volumes:
   nextcloud_aio_mastercontainer:
     name: nextcloud_aio_mastercontainer # This line is not allowed to be changed
@@ -49,3 +71,7 @@ services:
   #     - ./data:/data
   #     - ./sites:/srv
   #   network_mode: "host"
+
+    networks:
+      frontend:
+        ipv4_address: 172.22.1.5
