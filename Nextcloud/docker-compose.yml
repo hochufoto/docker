@@ -1,26 +1,5 @@
 version: "3.8"
 
-networks:
-  frontend:
-    driver: bridge
-    driver_opts:
-      com.docker.network.bridge.name: fr-znotes
-    name: fr-znotes
-    external: true
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.22.1.0/24
-  backend:
-    driver: bridge
-    driver_opts:
-      com.docker.network.bridge.name: bk-znotes
-    name: bk-znotes
-    external: true
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.23.1.0/24
 
 volumes:
   nextcloud_aio_mastercontainer:
@@ -41,8 +20,8 @@ services:
     environment: # Is needed when using any of the options below
       - APACHE_PORT=11000 # Is needed when running behind a web server or reverse proxy (like Apache, Nginx and else). See https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md
       - APACHE_DISABLE_REWRITE_IP=1 # Should be set when running behind a web server or reverse proxy (like Apache, Nginx and else) that is running on the same host. See https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md
-      - NEXTCLOUD_TRUSTED_DOMAINS=cloud.znotes.ru 172.22.1.5 # Your domain name + proxy host IP
-      - TRUSTED_PROXIES=172.22.1.5 # proxy host IP
+      - NEXTCLOUD_TRUSTED_DOMAINS=cloud.znotes.ru 127.0.0.1 # Your domain name + proxy host IP
+      - TRUSTED_PROXIES=127.0.0.1 # proxy host IP
       # - COLLABORA_SECCOMP_DISABLED=false # Setting this to true allows to disable Collabora's Seccomp feature. See https://github.com/nextcloud/all-in-one#how-to-disable-collaboras-seccomp-feature
       # - DOCKER_SOCKET_PATH=/var/run/docker.sock # Needs to be specified if the docker socket on the host is not located in the default '/var/run/docker.sock'. Otherwise mastercontainer updates will fail. For macos it needs to be '/var/run/docker.sock'
       # - DISABLE_BACKUP_SECTION=false # Setting this to true allows to hide the backup section in the AIO interface.
@@ -58,20 +37,14 @@ services:
       # - NEXTCLOUD_ENABLE_DRI_DEVICE=true # This allows to enable the /dev/dri device in the Nextcloud container which is needed for hardware-transcoding. See https://github.com/nextcloud/all-in-one#how-to-enable-hardware-transcoding-for-nextcloud
       # - TALK_PORT=3478 # This allows to adjust the port that the talk container is using.
 
-  # # Optional: Caddy reverse proxy. See https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md
-  # # You can find further examples here: https://github.com/nextcloud/all-in-one/discussions/588
-  # caddy:
-  #   image: caddy:alpine
-  #   restart: always
-  #   container_name: caddy
-  #   volumes:
-  #     - ./Caddyfile:/etc/caddy/Caddyfile
-  #     - ./certs:/certs
-  #     - ./config:/config
-  #     - ./data:/data
-  #     - ./sites:/srv
-  #   network_mode: "host"
-
     networks:
-      frontend:
-        ipv4_address: 172.22.1.5
+      - backend
+      - frontned
+
+networks:
+  backend:
+    name: backend
+    external: true
+  frontned:
+    name: frontned
+    external: true
