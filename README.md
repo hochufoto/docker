@@ -23,6 +23,11 @@ Install Docker and Docker compose:
 
     sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+Create network
+
+    sudo docker network create backend
+    sudo docker network create frontned
+
 Use docker without sudo:
 
     sudo usermod -aG docker $USER
