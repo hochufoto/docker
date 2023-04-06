@@ -25,8 +25,8 @@ Install Docker and Docker compose:
 
 Create network
 
-    sudo docker network create backend
-    sudo docker network create frontned
+    sudo docker network create --subnet 172.40.0.1/16 backend
+    sudo docker network create --subnet 172.41.0.1/16 frontned
 
 Use docker without sudo:
 
