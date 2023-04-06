@@ -43,7 +43,6 @@ services:
     networks:
       default:
         name: backend
-        external: true
         name: frontned
         external: true
 #========================================================================================
@@ -62,7 +61,6 @@ services:
     networks:
       default:
         name: backend
-        external: true
         name: frontned
         external: true
 #========================================================================================
