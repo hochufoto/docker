@@ -38,7 +38,6 @@ services:
       # - TALK_PORT=3478 # This allows to adjust the port that the talk container is using.
 
     networks:
-      - backend
       - frontned
 
 networks:
