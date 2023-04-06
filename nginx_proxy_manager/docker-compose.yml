@@ -1,8 +1,6 @@
 version: '3'
 
-volumes:
-  dbdata:
-#========================================================================================
+
 services:
   db:
     image: mysql:latest
@@ -17,10 +15,8 @@ services:
     volumes:
       - ./dbdata:/var/lib/mysql
     networks:
-      default:
-        name: backend
-        external: true
-  #========================================================================================
+      - backend
+
   app:
     image: 'jc21/nginx-proxy-manager:latest'
     container_name: npm-app
@@ -36,16 +32,14 @@ services:
       DB_MYSQL_NAME: "npm"
       DB_MYSQL_PASSWORD: "gq6Nr66WXhJEMbdpvbmK"
       # Uncomment this if IPv6 is not enabled on your host
-      #DISABLE_IPV6: 'true'
+      DISABLE_IPV6: 'true'
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
     networks:
-      default:
-        name: backend
-        name: frontned
-        external: true
-#========================================================================================
+      - backend
+      - frontned
+
   phpmyadmin:
     image: phpmyadmin:latest
     container_name: pma
@@ -59,10 +53,16 @@ services:
     ports:
       - '18080:80'
     networks:
-      default:
-        name: backend
-        name: frontned
-        external: true
-#========================================================================================
+      - backend
+      - frontned
 
-#mn2EJsedpPkqQtLTwct8
+networks:
+  backend:
+    name: backend
+    external: true
+  frontned:
+    name: frontned
+    external: true
+
+volumes:
+  dbdata:
