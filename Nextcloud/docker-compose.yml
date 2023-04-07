@@ -1,6 +1,5 @@
 version: "3.8"
 
-
 volumes:
   nextcloud_aio_mastercontainer:
     name: nextcloud_aio_mastercontainer # This line is not allowed to be changed
@@ -36,14 +35,3 @@ services:
       # - NEXTCLOUD_ADDITIONAL_PHP_EXTENSIONS=imagick # This allows to add additional php extensions to the Nextcloud container permanently. Default is imagick but can be overwritten by modifying this value. See https://github.com/nextcloud/all-in-one#how-to-add-php-extensions-permanently-to-the-nextcloud-container
       # - NEXTCLOUD_ENABLE_DRI_DEVICE=true # This allows to enable the /dev/dri device in the Nextcloud container which is needed for hardware-transcoding. See https://github.com/nextcloud/all-in-one#how-to-enable-hardware-transcoding-for-nextcloud
       # - TALK_PORT=3478 # This allows to adjust the port that the talk container is using.
-
-    networks:
-      - frontned
-
-networks:
-  backend:
-    name: backend
-    external: true
-  frontned:
-    name: frontned
-    external: true
