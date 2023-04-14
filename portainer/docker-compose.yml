@@ -12,15 +12,10 @@ services:
       - ./portainer-data:/data
     ports:
       - 12443:9443
-    networks:
-      - frontned
-
+# First create a network, ie "my-network": docker network create my-network
 networks:
-  backend:
-    name: backend
+  default:
     external: true
-  frontned:
-    name: frontned
-    external: true
+    name: my-network # Docker network name
 
 # geg5oQNnjn2Kid
