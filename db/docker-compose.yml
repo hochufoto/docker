@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+
+  mysql-server:
+    container_name: mysql-server
+    image: mysql:latest
+    command:
+      - mysqld
+      - --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pwd
+    volumes:
+      - ./db_data/mysql:/var/lib/mysql:rw
+    networks:
+      - zabbix_net
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8088:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql-server
+      - PMA_PORT=3306
+    networks:
+      - zabbix_net
