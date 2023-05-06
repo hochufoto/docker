@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  wordpress:
+    image: wordpress
+    container_name: wordpress
+    restart: always
+    ports:
+      - 8185:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: znotes-wp
+      WORDPRESS_DB_PASSWORD: WqUdm5Xxy7wkYz4tU2Xy
+      WORDPRESS_DB_NAME: znotes-wp
+    volumes:
+      - ./wp-data:/var/www/html
+  db:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql-wp
+    environment:
+      MYSQL_DATABASE: znotes-wp
+      MYSQL_USER: znotes-wp
+      MYSQL_PASSWORD: WqUdm5Xxy7wkYz4tU2Xy
+      MYSQL_ROOT_PASSWORD: P4oDmJ9EdF3PeTdNGyUT
+    volumes:
+      - ./db:/var/lib/mysql

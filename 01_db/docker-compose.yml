@@ -13,7 +13,8 @@ services:
     volumes:
       - ./db_data/mysql:/var/lib/mysql:rw
     networks:
-      - zabbix_net
+      default:
+        ipv4_address: 172.44.1.2
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -26,4 +27,13 @@ services:
       - PMA_HOST=mysql-server
       - PMA_PORT=3306
     networks:
-      - zabbix_net
+      default:
+        ipv4_address: 172.44.1.3
+
+networks:
+  default:
+    name: mysql-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.44.1.0/24

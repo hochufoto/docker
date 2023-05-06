@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+
+networks:
+      default:
+        ipv4_address: 172.44.1.4
+
+networks:
+  default:
+    name: mysql-net
+    external: true
