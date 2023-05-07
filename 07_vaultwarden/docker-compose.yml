@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    ports:
+      - 8282:80
+    volumes:
+      - ./data:/data
+    networks:
+      default:
+        ipv4_address: 172.44.1.8
+
+networks:
+  default:
+    name: mysql-net
+    external: true
