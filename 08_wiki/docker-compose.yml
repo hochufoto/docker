@@ -1,0 +1,23 @@
+version: "3"
+services:
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    container_name: wiki
+    restart: always
+    environment:
+      DB_TYPE: mysql
+      DB_HOST: mysql-server
+      DB_PORT: 3306
+      DB_USER: wiki
+      DB_PASS: wiki_pwd
+      DB_NAME: wiki
+    ports:
+      - "3000:3000"
+    networks:
+      default:
+        ipv4_address: 172.44.1.9
+
+networks:
+  default:
+    name: mysql-net
+    external: true
