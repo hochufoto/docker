@@ -21,7 +21,7 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     networks:
       default:
-        ipv4_address: 172.44.1.4
+        ipv4_address: 172.44.1.5
 
 networks:
   default:

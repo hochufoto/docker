@@ -15,7 +15,7 @@ services:
       - ./wp-data:/var/www/html
     networks:
       default:
-        ipv4_address: 172.44.1.5
+        ipv4_address: 172.44.1.4
 
 networks:
   default:
