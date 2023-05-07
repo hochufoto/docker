@@ -1,82 +1,47 @@
 version: '3.8'
 services:
 
-  mysql-server:
-    container_name: mysql-server
-    image: mysql:latest
-    command:
-      - mysqld
-      - --default-authentication-plugin=mysql_native_password
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_bin
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: zabbix
-      MYSQL_USER: zabbix
-      MYSQL_ROOT_PASSWORD: oWSQ9hMvkDteEYc26cey
-      MYSQL_PASSWORD: BGAyBDeXeUxpTZaCnQ96
-    volumes:
-      - ./zbx_data/var/lib/mysql:/var/lib/mysql:rw
-    networks:
-      - zabbix_net
-
-  phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: phpmyadmin
-    restart: unless-stopped
-    ports:
-      - 8088:80
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=mysql-server
-      - PMA_PORT=3306
-    networks:
-      - zabbix_net
-
   zabbix-server-mysql:
     container_name: zabbix-server-mysql
-    image: zabbix/zabbix-server-mysql:alpine-6.4-latest
+    image: zabbix/zabbix-server-mysql:ubuntu-6.4-latest
     restart: unless-stopped
     ports:
-      - "10051:10051"
+      - 10051:10051
     environment:
       - DB_SERVER_HOST=mysql-server
-      - DB_SERVER_PORT=3306
       - MYSQL_USER=zabbix
-      - MYSQL_PASSWORD=BGAyBDeXeUxpTZaCnQ96
+      - MYSQL_PASSWORD=zabbix_pwd
       - MYSQL_DATABASE=zabbix
-      - MYSQL_ROOT_PASSWORD=oWSQ9hMvkDteEYc26cey
+      - MYSQL_ROOT_PASSWORD=root_pwd
     volumes:
       - ./zbx_data/etc/zabbix:/etc/zabbix:rw
+      - ./data/export:/var/lib/zabbix/export
+      - ./data/snmptraps:/var/lib/zabbix/snmptraps
     networks:
-      - zabbix_net
+      default:
+        ipv4_address: 172.44.1.6
 
   zabbix-web-apache-mysql:
     container_name: zabbix-web-nginx-mysql
-    image: zabbix/zabbix-web-nginx-mysql:alpine-6.4-latest
+    image: zabbix/zabbix-web-apache-mysql:ubuntu-6.4-latest
     restart: unless-stopped
     ports:
-      - "8081:8080"
-      - "8443:8443"
+      - 8081:8080
+      - 8443:8443
     environment:
       - ZBX_SERVER_HOST=zabbix-server-mysql
       - DB_SERVER_HOST=mysql-server
-      - DB_SERVER_PORT=3306
       - MYSQL_USER=zabbix
-      - MYSQL_PASSWORD=BGAyBDeXeUxpTZaCnQ96
+      - MYSQL_PASSWORD=zabbix_pwd
       - MYSQL_DATABASE=zabbix
-      - MYSQL_ROOT_PASSWORD=oWSQ9hMvkDteEYc26cey
+      - MYSQL_ROOT_PASSWORD=root_pwd
       - PHP_TZ=Europe/Moscow
       - ZBX_MEMORYLIMIT=128M
     networks:
-      - zabbix_net
+      default:
+        ipv4_address: 172.44.1.7
 
 networks:
-  zabbix_net:
-    driver: bridge
-    driver_opts:
-      com.docker.network.enable_ipv6: "false"
-    ipam:
-      driver: default
-      config:
-      - subnet: 172.16.238.0/24
+  default:
+    name: mysql-net
+    external: true
