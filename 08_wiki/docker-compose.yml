@@ -1,7 +1,7 @@
 version: "3"
 services:
   wiki:
-    image: ghcr.io/requarks/wiki:2
+    image: requarks/wiki:latest
     container_name: wiki
     restart: always
     environment:
