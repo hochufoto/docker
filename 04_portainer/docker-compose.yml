@@ -9,13 +9,13 @@ services:
       - no-new-privileges:true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./portainer-data:/data
+      - ./data:/data
     ports:
       - 12443:9443
 # First create a network, ie "my-network": docker network create my-network
-networks:
-  default:
-    external: true
-    name: my-network # Docker network name
+#networks:
+#  default:
+#    external: true
+#    name: my-network # Docker network name
 
 # geg5oQNnjn2Kid
