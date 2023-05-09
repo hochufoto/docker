@@ -1,0 +1,208 @@
+pages:
+  - name: znotes
+    path: ./dashy/znotes.yml
+  - name: temp
+    path: ./dashy/temp.yml
+appConfig:
+  theme: callisto
+  language: ru
+  layout: auto
+  iconSize: large
+  startingView: default
+  defaultOpeningMethod: newtab
+  statusCheck: true
+  statusCheckInterval: 0
+  faviconApi: allesedv
+  routingMode: history
+  enableMultiTasking: true
+  widgetsAlwaysUseProxy: false
+  webSearch:
+    disableWebSearch: false
+    searchEngine: yandex
+    openingMethod: newtab
+    searchBangs: {}
+  enableFontAwesome: true
+  enableMaterialDesignIcons: false
+  hideComponents:
+    hideHeading: false
+    hideNav: false
+    hideSearch: false
+    hideSettings: false
+    hideFooter: false
+  auth:
+    enableGuestAccess: false
+    users: []
+    enableKeycloak: false
+  showSplashScreen: false
+  preventWriteToDisk: false
+  preventLocalSave: false
+  disableConfiguration: false
+  disableConfigurationForNonAdmin: false
+  allowConfigEdit: true
+  enableServiceWorker: false
+  disableContextMenu: false
+  disableUpdateChecks: false
+  disableSmartSort: false
+  enableErrorReporting: false
+pageInfo:
+  title: MyHomeLab
+  description: ''
+  navLinks: []
+  footerText: ''
+sections:
+  - name: znotes
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: znotes.ru
+        description: WordPress Blog
+        icon: https://znotes.ru/wp-includes/images/w-logo-blue-white-bg.png
+        url: https://znotes.ru
+        target: newtab
+        statusCheck: true
+        id: 0_675_znotesru
+      - title: Bitwarden
+        description: Password Manager
+        icon: https://pass.znotes.ru/favicon.ico
+        url: https://pass.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 1_675_bitwarden
+      - title: NextCloud AIO
+        description: NextCloud Personal Cloud
+        icon: https://cloud.znotes.ru/apps/theming/favicon/dashboard
+        url: https://cloud.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 2_675_nextcloudaio
+      - title: SOGo Groupware
+        description: Web Mail Client
+        icon: https://mail.znotes.ru/SOGo.woa/WebServerResources/img/sogo.ico
+        url: https://mail.znotes.ru/SOGo/
+        target: newtab
+        statusCheck: true
+        id: 3_675_sogogroupware
+      - title: MailCow Admin
+        icon: https://mail.znotes.ru/favicon.png
+        url: https://mail.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 4_675_mailcowadmin
+      - title: Zabbix
+        description: Monitoring
+        icon: https://zabbix.znotes.ru/favicon.ico
+        url: https://zabbix.znotes.ru
+        target: newtab
+        statusCheck: true
+        statusCheckUrl: https://zabbix.znotes.ru
+        id: 5_675_zabbix
+      - title: Nginx Proxy Manager
+        icon: https://npm.znotes.ru/images/favicons/favicon.ico
+        url: https://npm.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 6_675_nginxproxymanager
+      - title: Portainer CE
+        icon: https://portainer.znotes.ru/63a301f0574f1a696ce6.png
+        url: https://portainer.znotes.ru/
+        statusCheck: true
+        id: 7_675_portainerce
+      - title: phpMyAdmin
+        description: MySQL Web Panel
+        icon: https://pma.znotes.ru/themes/pmahomme/img/logo_right.png
+        url: https://pma.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 8_675_phpmyadmin
+  - name: Mining
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: A1.1
+        url: http://192.168.10.253:12001/
+        target: newtab
+        statusCheck: true
+        id: 0_610_a
+      - title: A1.2
+        url: http://192.168.10.253:12002
+        target: newtab
+        statusCheck: true
+        id: 1_610_a
+      - title: NiceHash
+        url: https://www.nicehash.com/my/mining/rigs
+        target: newtab
+        statusCheck: true
+        id: 2_610_nicehash
+  - name: Crypto Watch List
+    widgets:
+      - type: crypto-watch-list
+        options:
+          currency: USD
+          sortBy: alphabetical
+          assets:
+            - bitcoin
+            - ethereum
+            - solana
+            - polkadot
+            - near
+            - tron
+            - matic-network
+            - cosmos
+            - litecoin
+            - dash
+            - binancecoin
+            - bitcoin-cash
+            - ripple
+            - cardano
+            - elrond-erd-2
+            - tezos
+            - avalanche-2
+            - dydx
+            - trust-wallet-token
+            - 1inch
+            - sui
+            - helium
+            - flow
+        id: 0_1620_cryptowatchlist
+  - name: Clock
+    widgets:
+      - type: clock
+        options:
+          timeZone: Europe/Moscow
+          format: ru-RU
+          hideDate: false
+        id: 0_492_clock
+      - type: public-ip
+        id: 1_492_publicip
+      - type: crypto-price-chart
+        options:
+          asset: ethereum
+          currency: USD
+          numDays: 20
+        id: 2_492_cryptopricechart
+  - name: Wallet Balance
+    widgets:
+      - type: wallet-balance
+        options:
+          coin: btc
+          address: 3853bSxupMjvxEYfwGDGAaLZhTKxB2vEVC
+
+      - type: wallet-balance
+        options:
+          coin: btc
+          address: 3853bSxupMjvxEYfwGDGAaLZhTKxB2vEVC         
+        id: 0_1327_walletbalance
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 2
+      collapsed: false
+      hideForGuests: false

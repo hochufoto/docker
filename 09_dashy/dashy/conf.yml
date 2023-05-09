@@ -1,0 +1,290 @@
+pageInfo:
+  title: MyHomeLab
+appConfig:
+  theme: argon
+  fontAwesomeKey: 13014ae648
+  layout: auto
+  iconSize: large
+  language: ru
+sections:
+  - name: znotes.ru
+    displayData:
+      itemSize: large
+      cols: 1
+      rows: 2
+    items:
+      - title: znotes.ru
+        description: WordPress Blog
+        icon: https://znotes.ru/wp-includes/images/w-logo-blue-white-bg.png
+        url: https://znotes.ru
+        target: newtab
+        statusCheck: true
+        id: 0_952_znotesru
+      - title: Bitwarden
+        description: Password Manager
+        icon: https://pass.znotes.ru/favicon.ico
+        url: https://pass.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 1_952_bitwarden
+      - title: NextCloud AIO
+        description: NextCloud Personal Cloud
+        icon: https://cloud.znotes.ru/apps/theming/favicon/dashboard
+        url: https://cloud.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 2_952_nextcloudaio
+      - title: SOGo Groupware
+        description: Web Mail Client
+        icon: https://mail.znotes.ru/SOGo.woa/WebServerResources/img/sogo.ico
+        url: https://mail.znotes.ru/SOGo/
+        target: newtab
+        statusCheck: true
+        id: 3_952_sogogroupware
+      - title: MailCow Admin
+        icon: https://mail.znotes.ru/favicon.png
+        url: https://mail.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 4_952_mailcowadmin
+      - title: Zabbix
+        description: Monitoring
+        icon: https://zabbix.znotes.ru/favicon.ico
+        url: https://zabbix.znotes.ru
+        target: newtab
+        statusCheck: true
+        statusCheckUrl: https://zabbix.znotes.ru
+        id: 5_952_zabbix
+      - title: Nginx Proxy Manager
+        icon: https://npm.znotes.ru/images/favicons/favicon.ico
+        url: https://npm.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 6_952_nginxproxymanager
+      - title: Portainer CE
+        icon: https://portainer.znotes.ru/63a301f0574f1a696ce6.png
+        url: https://portainer.znotes.ru/
+        statusCheck: true
+        id: 7_952_portainerce
+      - title: phpMyAdmin
+        description: MySQL Web Panel
+        icon: https://pma.znotes.ru/themes/pmahomme/img/logo_right.png
+        url: https://pma.znotes.ru/
+        target: newtab
+        statusCheck: true
+        id: 8_952_phpmyadmin
+  - name: Mining
+    displayData:
+      itemSize: small
+      cols: 1
+      rows: 2
+    items:
+      - title: A1.1
+        url: http://192.168.10.253:12001/
+        target: newtab
+        statusCheck: true
+        id: 0_610_a
+      - title: A1.2
+        url: http://192.168.10.253:12002
+        target: newtab
+        statusCheck: true
+        id: 1_610_a
+      - title: NiceHash
+        url: https://www.nicehash.com/my/mining/rigs
+        target: newtab
+        statusCheck: true
+        id: 2_610_nicehash
+    widgets:
+      - type: crypto-price-chart
+        options:
+          asset: bitcoin
+          currency: USD
+          numDays: 3
+        id: 0_610_cryptopricechart
+      - type: crypto-price-chart
+        options:
+          asset: ethereum
+          currency: USD
+          numDays: 3
+        id: 1_610_cryptopricechart
+  - name: Clock
+    displayData:
+      itemSize: large
+      cols: 1
+      rows: 1
+    items: null
+    widgets:
+      - type: clock
+        options:
+          timeZone: Europe/Moscow
+          format: ru-RU
+          hideDate: false
+        id: 0_492_clock
+      - type: public-ip
+        id: 1_492_publicip
+  - name: Crypto Watch List
+    displayData:
+      itemSize: small
+      cols: 1
+      rows: 5
+    items: null
+    widgets:
+      - type: crypto-watch-list
+        options:
+          currency: USD
+          sortBy: alphabetical
+          assets:
+            - bitcoin
+            - ethereum
+            - solana
+            - polkadot
+            - near
+            - tron
+            - matic-network
+            - cosmos
+            - litecoin
+            - dash
+            - binancecoin
+            - bitcoin-cash
+            - ripple
+            - cardano
+            - elrond-erd-2
+            - tezos
+            - avalanche-2
+            - dydx
+            - trust-wallet-token
+            - 1inch
+            - sui
+            - helium
+            - flow
+        id: 0_1620_cryptowatchlist
+  - name: Wallet Balance
+    displayData:
+      cols: 1
+      rows: 4
+    items: null
+    widgets:
+      - type: wallet-balance
+        options:
+          coin: btc
+          address: bc1qthu00zyzz5m8nr8y5kjrn67tjh25ewn5vk34ju
+          limit: 4
+        id: 0_1327_walletbalance
+      - type: wallet-balance
+        options:
+          coin: eth
+          address: '0x59D049d835E99Cb738A75D3B2D0e2236c3571448'
+          limit: 4
+        id: 1_1327_walletbalance
+  - name: Media
+    displayData:
+      itemSize: small
+      cols: 2
+      rows: 2
+    items:
+      - title: AniMedia
+        icon: https://amedia.online/templates/Animedia/images/favicon.png
+        url: https://amedia.online/
+        target: newtab
+        id: 0_480_animedia
+      - title: DoramaLive
+        icon: https://doramalive.ru/local/lib/manifest/favicon-32x32.png
+        url: https://doramalive.ru
+        target: newtab
+        id: 1_480_doramalive
+      - title: seasonvar
+        icon: http://cdn.bigsv.ru/images/fav/favicon.ico
+        url: http://seasonvar.ru/?mod=pause
+        target: newtab
+        id: 2_480_seasonvar
+      - title: null
+        icon: null
+        url: null
+        target: newtab
+        id: 3_480_unknown
+      - title: YouTube
+        icon: https://www.youtube.com/s/desktop/58a4d39f/img/favicon.ico
+        url: https://www.youtube.com/
+        target: newtab
+        id: 4_480_youtube
+      - title: RuTube
+        icon: https://static.rutube.ru/static/favicon.ico
+        url: https://rutube.ru
+        target: newtab
+        id: 5_480_rutube
+      - title: NNM-Club
+        icon: https://nnmclub.to/favicon.ico
+        url: https://nnmclub.to/
+        target: newtab
+        id: 6_480_nnmclub
+      - title: RuTracker.org
+        icon: https://rutracker.org/favicon.ico
+        url: https://rutracker.org/forum/index.php
+        target: newtab
+        id: 7_480_rutrackerorg
+  - name: Учеба
+    displayData:
+      itemSize: small
+      cols: 2
+      rows: 2
+    items:
+      - title: GitHub
+        icon: https://github.githubassets.com/favicons/favicon.png
+        url: https://github.com/hochufoto
+        target: newtab
+        id: 0_5376_github
+      - title: Яндекс Практикум
+        icon: https://praktikum.s3.yandex.net/praktikum/v2.63/static/favicon.png
+        url: https://practicum.yandex.ru/profile/python-free/
+        target: newtab
+        id: 1_5376_
+      - title: IP калькулятор
+        icon: https://ip-calculator.ru/style/favicon.png
+        url: https://ip-calculator.ru/
+        target: newtab
+        id: 2_5376_ip
+      - title: Cisco Networking Academy
+        icon: https://static.production.devnetcloud.com/images/favicon.ico
+        url: https://www.netacad.com/
+        target: newtab
+        id: 3_5376_cisconetworkingacademy
+      - title: Stack Overflow
+        icon: https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico
+        url: https://stackoverflow.com/
+        target: newtab
+        id: 4_5376_stackoverflow
+      - title: Code.org
+        icon: https://code.org/images/favicon.ico
+        url: https://code.org/
+        target: newtab
+        id: 5_5376_codeorg
+      - title: Cisco Developer
+        icon: https://static.production.devnetcloud.com/images/favicon.ico
+        url: https://developer.cisco.com/
+        target: newtab
+        id: 6_5376_ciscodeveloper
+      - title: null
+        icon: null
+        url: null
+        target: newtab
+        id: 7_5376_unknown
+      - title: null
+        icon: null
+        url: null
+        target: newtab
+        id: 8_5376_unknown
+      - title: null
+        icon: null
+        url: null
+        target: newtab
+        id: 9_5376_unknown
+      - title: null
+        icon: null
+        url: null
+        target: newtab
+        id: 10_5376_unknown
+      - title: null
+        icon: null
+        url: null
+        target: newtab
+        id: 11_5376_unknown
