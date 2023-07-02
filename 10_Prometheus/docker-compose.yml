@@ -69,8 +69,8 @@ services:
     container_name: alertmanager-bot
     hostname: alertmanager-bot
     environment:
-      TELEGRAM_ADMIN: 525314981
-      TELEGRAM_TOKEN: 5260692456:AAGDM2lZkL1i6vMlvO6gxghxb8Yy_zrLfSs
+      TELEGRAM_ADMIN:
+      TELEGRAM_TOKEN:
       TZ: "Europe/Moscow"
     restart: unless-stopped
     volumes:
