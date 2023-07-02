@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: traefik:v2.10
+    container_name: traefik
+    command:
+      - "--api.insecure=false"
+      - "--api.dashboard=true" 
+      - "--log.level=DEBUG"
+      - "--providers.docker"
+      - "--providers.docker.exposedByDefault=false"
+      #- "--providers.docker.network=mynet"
+    #entrypoints:
+      - "--entrypoints.http.address=:80"
+      - "--entrypoints.https.address=:443"
+      - "--entrypoints.mysql.address=:3306"
+      - "--entrypoints.http.http.redirectiions.entrypoint.to=https"
+      - "--entrypoints.http.http.redirectiions.entrypoint.scheme=https"
+    #SSL Let'sEncrypts:
+      - "--entrypoints.https.http.tls.certResolver=le"
+      - "--certificatesresolvers.le.acme.email=admin@znotes.ru"
+      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.le.acme.tlschallenge=true"
+    #Dashboard secure zalim 4i5REnmAak&FKaY:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.rule=Host('traefik.znotes.ru')"
+      - "traefik.http.routers.dashboard.entrypoints=https"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.middlewares=auth"
+      - "traefik.http.middlewares.auth.basicauth.users=zalim:$$apr1$$BfyB628/$$RtzeJviKuI5VCBP1Eqq7X1"
+    ports:
+      - "80:80"
+      - "443:443"
+      #- "8080:8080"
+      - "3306:3306"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./letsencrypt:/letsencrypt
+
+networks:
+  default:
+    name: mynet
+    external: true
+    

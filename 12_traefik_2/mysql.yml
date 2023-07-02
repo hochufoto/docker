@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mysql:
+    image: mariadb:latest
+    restart: always
+    container_name: mariadb
+    environment:
+      - MYSQL_DATABASE: mydb
+      - MYSQL_USER: sql-user
+      - MYSQL_PASSWORD: user-pass
+      - MYSQL_ROOT_PASSWORD: root-pass
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.mysql.rule=HostSNI('*')"
+      - "traefik.tcp.routers.mysql.entrypoints=mysql"
+      - "traefik.tcp.routers.mysql.service=mysql-svc"
+      - "traefik.tcp.services.mysql-svc.loadbalancer.server.port=3306"
+
+networks:
+  default:
+    name: mynet
