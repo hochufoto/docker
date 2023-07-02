@@ -10,7 +10,15 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
       - targets:
-        - https://www.dmosk.ru
+        - https://znotes.ru
+        - https://pass.znotes.ru
+        - https://cloud.znotes.ru
+        - https://mail.znotes.ru/SOGo
+        - https://mail.znotes.ru
+        - https://zabbix.znotes.ru
+        - https://npm.znotes.ru
+        - https://portainer.znotes.ru
+        - https://pma.znotes.ru
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
